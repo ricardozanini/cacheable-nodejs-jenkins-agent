@@ -9,7 +9,7 @@ pipeline {
                 script {
                     appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/"), (env.GIT_REPOSITORY_APP.length() - 1))
                     echo "App is in dir ${appDirectory}"
-                    sh "ls -la"
+                    sh "pwd && ls -la"
                     stash name: 'app_repo', includes: "${appDirectory}/**"
                 }
             }

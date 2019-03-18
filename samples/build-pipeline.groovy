@@ -7,7 +7,7 @@ pipeline {
             steps {
                 git env.GIT_REPOSITORY_APP
                 script {
-                    appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/"), (env.GIT_REPOSITORY_APP.length() - 1))
+                    appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/") + 1, (env.GIT_REPOSITORY_APP.length() - 1))
                     echo "App is in dir ${appDirectory}"
                     sh "pwd && ls -la"
                     sh "mkdir ${appDirectory} && rsync -av --progress * ${appDirectory} --exclude ${appDirectory}"

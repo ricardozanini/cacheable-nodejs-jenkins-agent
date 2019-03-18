@@ -9,7 +9,7 @@
       "name": "NAME",
       "displayName": "Application Name",
       "discription": "Name of the Node Sample application.",
-      "value": "node-todo-frontend",
+      "value": "node-build-cache",
       "required": true
     },
     {
@@ -108,7 +108,7 @@
                 "env": [
                   {
                     "name": "PORT",
-                    "value": 8080
+                    "value": "8080"
                   }
                 ],
                 "imagePullPolicy": "Always",

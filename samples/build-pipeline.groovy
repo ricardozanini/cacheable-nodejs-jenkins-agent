@@ -7,7 +7,7 @@ pipeline {
             steps {
                 git env.GIT_REPOSITORY_APP
                 script {
-                    def appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/"), (env.GIT_REPOSITORY_APP.length - 1);
+                    def appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/"), (env.GIT_REPOSITORY_APP.length() - 1)
                     echo "App is in dir ${appDirectory}"
                     stash name: 'app_repo', includes: "${appDirectory}/**"
                 }

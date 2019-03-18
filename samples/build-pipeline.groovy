@@ -10,6 +10,7 @@ pipeline {
                     appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/"), (env.GIT_REPOSITORY_APP.length() - 1))
                     echo "App is in dir ${appDirectory}"
                     sh "pwd && ls -la"
+                    sh "mkdir ${appDirectory} && rsync -av --progress * ${appDirectory} --exclude ${appDirectory}"
                     stash name: 'app_repo', includes: "${appDirectory}/**"
                 }
             }

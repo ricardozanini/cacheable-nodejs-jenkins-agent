@@ -5,10 +5,12 @@ pipeline {
     stages {
         stage("checkout SCM") {   
             steps {
-                git env.GIT_REPOSITORY_APP
                 script {
+                    sh "rm -rf *"
+                    git env.GIT_REPOSITORY_APP
                     appDirectory = env.GIT_REPOSITORY_APP.substring(env.GIT_REPOSITORY_APP.lastIndexOf("/") + 1, (env.GIT_REPOSITORY_APP.length() - 1))
                     echo "App is in dir ${appDirectory}"
+                    // just debug info
                     sh "pwd && ls -la"
                     sh "mkdir ${appDirectory} && rsync -av --progress * ${appDirectory} --exclude ${appDirectory}"
                     stash name: 'app_repo', includes: "${appDirectory}/**"
